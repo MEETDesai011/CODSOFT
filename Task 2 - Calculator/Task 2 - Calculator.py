@@ -41,8 +41,8 @@ def calculate(operation):
         result_label.config(text=f"Result: {result}")
         history_entries.append(expression)
         update_history()
-
-        # Clear only second entry (allow chaining from first or result)
+        
+        entry1.delete(0, tk.END)
         entry2.delete(0, tk.END)
 
     except ValueError:
@@ -72,7 +72,7 @@ root.title("Cumulative Calculator")
 root.geometry("550x600")
 root.configure(bg="black")
 
-# Entry fields
+# Entry Fields
 tk.Label(root, text="Enter first number:", bg="black", fg="white").pack(pady=5)
 entry1 = tk.Entry(root, bg="black", fg="white")
 entry1.pack(pady=5)
@@ -93,15 +93,14 @@ for op in operations:
                     bg='yellow', fg='black', relief='flat', width=10)
     btn.pack(pady=2)
 
-# Reset Button
 tk.Button(root, text="Reset", command=reset,
           bg="red", fg="white", relief='flat', width=10).pack(pady=10)
 
-# Result label
+# Result
 result_label = tk.Label(root, text="Result: ", bg="black", fg="white")
 result_label.pack(pady=10)
 
-# History panel
+# History
 history_frame = tk.Frame(root, bg="black")
 history_frame.pack(side=tk.RIGHT, fill=tk.Y, padx=10)
 
